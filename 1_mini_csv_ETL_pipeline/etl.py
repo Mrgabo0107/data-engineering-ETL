@@ -1,7 +1,7 @@
 import pandas as pd
 import sqlite3 as sq
 import argparse
-
+import os
 
 def read_and_show_pure_data(path):
     df = pd.read_csv(path, )
@@ -61,8 +61,9 @@ if __name__ == "__main__":
     parser.add_argument("database_name", type=str, help="Name of the database to save")
     args = parser.parse_args()
     path_to_csv_file = args.data_csv_path
-    path_to_database_file = f"cleaned_data/{args.database_name}.db"
-    print("aca: ", path_to_database_file)
+    database_dir = "cleaned_data"
+    path_to_database_file = f"{database_dir}/{args.database_name}.db"
+    os.makedirs(database_dir, exist_ok=True)
     df = read_and_show_pure_data(path_to_csv_file)
 
     #------------------------------------------------------------------------
