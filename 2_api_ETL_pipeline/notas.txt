@@ -1,0 +1,3 @@
+api origin:
+
+https://openweathermap.org/api

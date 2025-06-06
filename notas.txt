@@ -1,0 +1,154 @@
+Plan de portefeuille Data Engineering – Gabriel Moreno Reyes
+
+Objectif général
+
+Élaborer quatre mini‑projets concis mais percutants, chacun ciblant une compétence essentielle du data engineering (ETL, SQL, automatisation, visualisation). Le tout sera hébergé sur GitHub dans une organisation claire, afin de convaincre les recruteurs français d’un stage que vous maîtrisez la chaîne de traitement des données de bout en bout.
+
+Calendrier global (3 semaines, 14 jours de travail effectif)
+
+Semaine
+
+Projet
+
+Jalons clés
+
+1
+
+P1 : Mini‑pipeline ETL CSV → SQLite
+
+J1 : cadrage & choix du datasetJ2 : nettoyage + transformationJ3 : chargement dans SQLite + README + diagramme
+
+1‑2
+
+P2 : ETL API publique → SQLite
+
+J4 : sélection et test de l’APIJ5‑6 : extraction + transformation JSON → tabulaireJ7 : script d’automatisation (cron / GitHub Action) + README
+
+2
+
+P3 : Analyse exploratoire & dashboard
+
+J8 : définition des questions & requêtes SQLJ9 : notebook Jupyter + visualisations matplotlibJ10 : conclusions, captures d’écran, README
+
+3
+
+P4 : Pipeline batch multi‑fichier
+
+J11 : collecte (12 CSV) & structure de dossiersJ12‑13 : boucle ETL + optimisation (chunks / multiprocessing)J14 : CLI (argparse ou click), README
+
+Total : ± 35 h d’investissement (≈ 5 h/jour)
+
+Détails par projet
+
+P1 – Mini‑pipeline ETL CSV → SQLite
+
+Stack : Python 3.12, pandas, SQLite, typer (CLI légère)
+
+Livrables : etl_csv.py, base de données sales.db, README, diagramme draw.io (pipeline)
+
+Compétences visées : lecture CSV, nettoyage (types, valeurs manquantes), création de table SQL, insertion bulk.
+
+Tâches pas à pas :
+
+Sélectionner un petit jeu de ventes open‑data (< 50 ko).
+
+Concevoir un schéma cible minimal (3‑4 colonnes).
+
+Écrire le script ETL (extraire, transformer, charger).
+
+Ajouter une option --refresh pour regénérer la table.
+
+Documenter et pousser sur GitHub.
+
+P2 – ETL API publique → SQLite
+
+Exemples d’API : Open‑Météo, COVID‑19, Transport Paris (RATPs).
+
+Nouveautés : authentification (token si besoin), gestion des erreurs réseau, pagination.
+
+Livrables : fetch_api.py, base api_data.db, README.
+
+Automatisation : créer un job cron local ou une GitHub Action planifiée.
+
+P3 – Analyse exploratoire & dashboard
+
+Outils : JupyterLab, SQLAlchemy, matplotlib / plotly.
+
+Livrables : Notebook .ipynb, exports PNG des graphiques, README.
+
+Storytelling : 1 question business + 3 graphiques + 3 insights.
+
+P4 – Pipeline batch multi‑fichier
+
+Scenario : 12 fichiers de ventes mensuelles (≈ 50 Mo total).
+
+Stack : pandas chunksize, tqdm, SQLite indexation.
+
+Livrables : batch_etl.py, DB unifiée year_sales.db, CLI (python batch_etl.py ./data --year 2024).
+
+Structure GitHub proposée
+
+data-eng-portfolio/
+├── 01_etl_csv/
+│   ├── src/
+│   ├── data/
+│   └── README.md
+├── 02_etl_api/
+│   ├── src/
+│   ├── data/
+│   └── README.md
+├── 03_eda_dashboard/
+│   ├── notebooks/
+│   └── README.md
+├── 04_batch_pipeline/
+│   ├── src/
+│   ├── data/
+│   └── README.md
+└── LICENSE
+
+Chaque README suit le canevas :
+
+Objectif
+
+Données sources
+
+Stack & dépendances
+
+Comment exécuter (poetry run, python main.py …)
+
+Aperçu des résultats (captures / GIF)
+
+Améliorations futures
+
+Checklist de compétences à cocher
+
+
+
+Ressources utiles
+
+Documentation pandas (10′ : read_csv, to_sql).
+
+GitHub Actions : workflow_dispatch & schedule.
+
+SQLite cheat‑sheet : commandes .schema, .indices.
+
+Visualisation : matplotlib "pyplot", df.plot() rapide.
+
+Générateur de diagrammes : draw.io ou mermaid markdown.
+
+Prochaines étapes
+
+Cloner ou créer le repo data-eng-portfolio.
+
+Initialiser poetry ou pipenv pour gérer les dépendances.
+
+🏁 Démarrer P1 demain (J1) – choisir le dataset & créer la branche feat/p1-etl-csv.
+
+Informer l’agent (moi) des blocages ; je fournirai code snippets, revues, tests unitaires.
+
+Une fois P1 terminé, ouvrir la pull‑request pour revue.
+
+💡 Conseil recrutement : Ajoutez sur votre profil LinkedIn un post épinglé pour chaque projet terminé (gif + lien PR).
+
+-----------------------------------------------------------------------------------
+

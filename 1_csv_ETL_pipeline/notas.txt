@@ -1,0 +1,1 @@
+hacer un buen readme y hacer una muestra grafica del pipeline
