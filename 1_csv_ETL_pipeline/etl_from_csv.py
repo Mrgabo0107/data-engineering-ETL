@@ -83,12 +83,7 @@ def load(df, path_to_database_file):
         df.to_sql('etf_data', conn, if_exists='replace', index=False)
     print(f"Data loaded in the database: {path_to_database_file}")
 
-
-if __name__ == "__main__":
-    #------------------------------------------------------------------------
-    # initialize the pipeline with the path to the csv file and the name of the database
-    # arguments.
-    #------------------------------------------------------------------------
+def init():
     parser = argparse.ArgumentParser(description='ETL pipeline for ETF data')
     parser.add_argument("data_csv_path", type=str, help="Path to the CSV file to read")
     parser.add_argument("database_name", type=str, help="Name of the database to save")
@@ -97,7 +92,14 @@ if __name__ == "__main__":
     database_dir = "cleaned_data"
     path_to_database_file = f"{database_dir}/{args.database_name}.db"
     os.makedirs(database_dir, exist_ok=True)
+    return path_to_csv_file, path_to_database_file
 
+if __name__ == "__main__":
+    #------------------------------------------------------------------------
+    # Initialize the pipeline with the path to the csv file and the name of the 
+    # database arguments.
+    #------------------------------------------------------------------------
+    path_to_csv_file, path_to_database_file = init()
     #------------------------------------------------------------------------
     # EXTRACT the data from the csv file
     #-----------------------------  -------------------------------------------
