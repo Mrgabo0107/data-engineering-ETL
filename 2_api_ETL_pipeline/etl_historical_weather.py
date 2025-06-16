@@ -31,7 +31,7 @@ def extract(latitude, longitude):
         print(f"Request error while fetching data: {e}")
     except ValueError as e:
         print(f"Value error: {e}")
-    return pd.DataFrame()  # Return empty DataFrame on failure
+    return pd.DataFrame()
 
 
 def transform(df):
@@ -89,7 +89,7 @@ def etl_historical_weather(latitude, longitude, path_to_db_file):
     try:
         df = extract(latitude, longitude)
         if df.empty:
-            print("No data returned from extract(). Aborting ETL.")
+            print("No data returned from extract(). Aborting  historical weather ETL.")
             return
         df = transform(df)
         load(df, path_to_db_file)

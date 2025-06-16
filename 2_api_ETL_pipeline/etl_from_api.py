@@ -20,12 +20,17 @@ def init():
         if ivalue <= 0:
             raise ArgumentTypeError(f"{value} is not a positive integer")
         return ivalue
+    def positive_float(value):
+        fvalue = float(value)
+        if fvalue <= 0:
+            raise ArgumentTypeError(f"{value} is not a positive float")
+        return fvalue
     parser = ArgumentParser(description='ETL pipeline for weather data')
     parser.add_argument("database_name", type=str, help="Name of the database to save")
     parser.add_argument("latitude", type=float, help="Latitude of the location")
     parser.add_argument("longitude", type=float, help="Longitude of the location")
     parser.add_argument("--num_of_calls", type=positive_int, default = 10, help="Number of times current weather info will be requested (default: 10)")
-    parser.add_argument("--time_interval", type=positive_int, default=60, help="Time interval between requests(in minutes, default: 60,  recommended: > 60))")
+    parser.add_argument("--time_interval", type=positive_float, default=60, help="Time interval between requests(in minutes, default: 60,  recommended: > 60))")
     args = parser.parse_args()
     database_dir = "cleaned_data"
     path_to_database_file = f"{database_dir}/{args.database_name}.db"
