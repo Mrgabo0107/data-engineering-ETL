@@ -1,1 +1,0 @@
-data source: https://www.investing.com/etfs/cs-etf-(ie)-on-s-p-500-historical-data?cid=995389
